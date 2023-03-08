@@ -15,7 +15,6 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { GripVertical } from "lucide-react";
-import { Rocket } from "lucide-react";
 import Head from "next/head";
 import { useState } from "react";
 import LinearGradient from "../components/linear-background";
@@ -87,17 +86,13 @@ export default function Home() {
 
   function handleDragEnd(event) {
     const { active, over } = event;
-    if (!active.id) {
-      return;
+    if (active?.id !== over?.id) {
+      setItems((prev) => {
+        const activeIndex = prev.findIndex((item) => item.id === active?.id);
+        const overIndex = prev.findIndex((item) => item.id === over?.id);
+        return arrayMove(prev, activeIndex, overIndex);
+      });
     }
-    if (active.id === over?.id) {
-      return;
-    }
-    setItems((prev) => {
-      const activeIndex = prev.findIndex((item) => item.id === active?.id);
-      const overIndex = prev.findIndex((item) => item.id === over?.id);
-      return arrayMove(prev, activeIndex, overIndex);
-    });
   }
 
   return (
