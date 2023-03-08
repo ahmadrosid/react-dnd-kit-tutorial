@@ -1,6 +1,7 @@
-# Next.js + Tailwindcss boilerplate
+# React @dnd-kit tutorial
 
-Quickly start new project with basic tailwindcss setup.
+Example how to use react dnd-kit.
 
-## Sample page
+## demo
+
 ![demo](/demo-app.png)
